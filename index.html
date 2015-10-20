@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AngularJS - Observer Pattern</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        a[data-ng-click] {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row" data-ng-app="AngularJSObserverPattern">
+        <h1>AngularJS - Observer Pattern</h1>
+
+        <div class="col-sm-4" data-ng-controller="UserListController">
+            <h2>Users</h2>
+            <ul class="nav nav-pills nav-stacked">
+                <li data-ng-repeat="user in users" role="presentation">
+                    <a data-ng-click="selectUser(user)">
+                        {{ user.name }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-8" data-ng-controller="UserDetailController">
+            <h2>Selected user</h2>
+            <div data-ng-if="user === null">
+                <div class="alert alert-info" role="alert">
+                    <p>Select a user from the left panel.</p>
+                </div>
+            </div>
+            <div data-ng-if="user !== null">
+                <dl class="dl-horizontal">
+                    <dt>Name</dt>
+                    <dd>
+                        {{ user.name }}
+                    </dd>
+                    <dt>Email</dt>
+                    <dd>
+                        {{ user.email }}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- @todo To use Bootstrap components from the AngularJS app, switch to UI Bootstrap. -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
